@@ -36,3 +36,19 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  margin: 0;
+}
+
+.navbar {
+  height: 100px;
+  background-color: royalblue;
+  color: whitesmoke;
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
