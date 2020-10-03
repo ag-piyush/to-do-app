@@ -27,7 +27,7 @@ function Header() {
         color: colorOfDay
     }
     return (
-    <header class="navbar" style={styles}>Hey! Good {timeOfDay}</header>
+    <header className="navbar" style={styles}>Hey! Good {timeOfDay}</header>
     );
 }
 
