@@ -3,23 +3,19 @@ import './App.css';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import TodoItem from './components/TodoItem';
+import todosData from "./components/todosData";
+
 function App() {
+  const todoItems = todosData.map(function(item){
+    return (
+      <TodoItem key={item.id} item={item}/>
+    )
+  })
   return (
     <div>
       <Header />
       <div className="todo-list">
-        <TodoItem 
-          description="Placeholder Data 1"
-        />
-        <TodoItem 
-          description="Placeholder Data 2"
-        />
-        <TodoItem 
-          description="Placeholder Data 3"
-        />
-        <TodoItem 
-          description="Placeholder Data 4"
-        />
+        {todoItems}
       </div>
       <Footer />
     </div>
