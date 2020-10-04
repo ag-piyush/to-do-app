@@ -8,10 +8,18 @@ function App() {
     <div>
       <Header />
       <div className="todo-list">
-        <TodoItem />
-        <TodoItem />
-        <TodoItem />
-        <TodoItem />
+        <TodoItem 
+          description="Placeholder Data 1"
+        />
+        <TodoItem 
+          description="Placeholder Data 2"
+        />
+        <TodoItem 
+          description="Placeholder Data 3"
+        />
+        <TodoItem 
+          description="Placeholder Data 4"
+        />
       </div>
       <Footer />
     </div>
