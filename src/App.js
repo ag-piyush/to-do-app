@@ -5,21 +5,23 @@ import Header from './components/Header';
 import TodoItem from './components/TodoItem';
 import todosData from "./components/todosData";
 
-function App() {
-  const todoItems = todosData.map(function(item){
+class App extends React.Component {
+  render() {
+    const todoItems = todosData.map(function(item){
+      return (
+        <TodoItem key={item.id} item={item}/>
+      )
+    })
     return (
-      <TodoItem key={item.id} item={item}/>
-    )
-  })
-  return (
-    <div>
-      <Header />
-      <div className="todo-list">
-        {todoItems}
+      <div>
+        <Header />
+        <div className="todo-list">
+          {todoItems}
+        </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
-  );
+    );
+  }
 }
 
 export default App;
