@@ -4,14 +4,25 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import TodoItem from './components/TodoItem';
 import todosData from "./components/todosData";
+//import Conditional from "./components/Conditional";
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      todos: todosData
+      todos: todosData,
+      isLoading: true
+
     }
     this.handleChange = this.handleChange.bind(this);
+  }
+
+  componentDidMount() {
+    setTimeout(()=> {
+      this.setState({
+        isLoading: false
+      })
+    }, 1500)
   }
 
   handleChange(id) {
@@ -38,17 +49,23 @@ class App extends React.Component {
   }
 
   render() {
-    const todoItems = this.state.todos.map((item) => <TodoItem key={item.id} 
-    item={item} 
-    handleChange={this.handleChange}/>);
+    const todoItems = this.state.todos.map((item) => <TodoItem
+      key={item.id} 
+      item={item} 
+      handleChange={this.handleChange}/>
+    );
 
     return (
       <div>
-        <Header />
-        <div className="todo-list">
-          {todoItems}
-        </div>
-        <Footer />
+        {this.state.isLoading ? <h1>Loading</h1> :
+          <div>
+            <Header />
+            <div className="todo-list">
+              {todoItems}
+            </div>
+            <Footer />
+          </div>
+        }
       </div>
     );
   }
