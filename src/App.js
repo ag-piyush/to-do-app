@@ -5,6 +5,7 @@ import Header from './components/Header';
 import TodoItem from './components/TodoItem';
 import todosData from "./components/todosData";
 //import Conditional from "./components/Conditional";
+import LoadingPage from "./components/LoadingPage";
 
 class App extends React.Component {
   constructor() {
@@ -18,11 +19,9 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    setTimeout(()=> {
-      this.setState({
-        isLoading: false
-      })
-    }, 1500)
+    this.setState({
+      isLoading: false
+    })
   }
 
   handleChange(id) {
@@ -57,7 +56,8 @@ class App extends React.Component {
 
     return (
       <div>
-        {this.state.isLoading ? <h1>Loading</h1> :
+        {this.state.isLoading ? 
+          <LoadingPage />:
           <div>
             <Header />
             <div className="todo-list">
