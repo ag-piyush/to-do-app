@@ -1,0 +1,46 @@
+.formDec {
+    margin: auto;
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+}
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 5px;
+    border: 0;
+    box-shadow: 0 0 15px 4px rgba(0,0,0,0.06);
+    border-radius: 10px;
+}
+
+button{
+    padding: 10px;
+    
+    -webkit-appearance:none;
+            appearance:none;
+
+    border:none;
+    background-color:#3F51B5;
+    color:#fff;
+    font-weight:600;
+    border-radius:5px;
+    width:100%;
+}
+
+.border-bottom-input {
+    border:0; 
+    border-bottom:1px solid #eee; 
+}
+
+input {
+    font-family:inherit;
+    font-size: inherit;
+}
+

@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import TodoItem from "./TodoItem";
+import './TakeData.css';
 
 class TakeData extends Component{
     constructor() {
@@ -55,13 +56,16 @@ class TakeData extends Component{
 
         return(
             <div>
-                <form onSubmit={this.addItem}>
-                    <input
-                        ref={(a) => this._inputElement = a}
-                        placeholder="Insert your text!">
-                    </input>
-                    <button type="submit">Add Task!</button>
-                </form>
+                <div className="formDec rounded-input border-bottom-input">
+                    <form onSubmit={this.addItem}>
+                        <input
+                            type="text"
+                            ref={(a) => this._inputElement = a}
+                            placeholder="Insert your text!">
+                        </input>
+                        <button type="submit">Add Task!</button>
+                    </form>
+                </div>
                 <div className="todo-list">
                     {todoItems}
                 </div>
