@@ -4,11 +4,13 @@ import './TakeData.css';
 
 class TakeData extends Component{
     constructor() {
+        super()
         this.state = {
             todos: []
         }
         this.addItem = this.addItem.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.onDelete = this.onDelete.bind(this);
     }
 
     handleChange(id) {
@@ -45,12 +47,20 @@ class TakeData extends Component{
     
         e.preventDefault();
     }
-
+    onDelete(id) {
+        const newTodos = this.state.todos.filter((item) => item.id !== id);
+        this.setState(() => {
+            return {
+                todos: newTodos
+            }
+        });
+    }
     render() {
         const todoItems = (this.state.todos.length === 0) ? <div></div> : <div className="todo-list"> { this.state.todos.map((item) => <TodoItem
             key={item.id} 
             item={item} 
-            handleChange={this.handleChange}/> 
+            handleChange={this.handleChange}
+            onDelete={this.onDelete}/> 
         )
     } </div>
 

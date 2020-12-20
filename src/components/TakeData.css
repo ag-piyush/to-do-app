@@ -39,4 +39,36 @@ button{
     border-bottom:1px solid #eee; 
 }
 
+.close {
+    margin-right: 0;
+    margin-left: auto;
+    padding-bottom: 10px;
+
+}
+
+.close-button {
+    width: 30px;
+    height: 30px;
+    opacity: 0.3;
+}
+.close-button:hover {
+    opacity: 1;
+}
+
+.close-button:before{
+    content: 'X';
+    height: 32px;
+    width: 32px;
+}
+
+.close-button:before {
+    transform: rotate(45deg);
+}
+.close-button:after {
+    transform: rotate(-45deg);
+}
+.text{
+    word-wrap: break-word;
+}
+
 
