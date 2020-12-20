@@ -4,7 +4,6 @@ import './TakeData.css';
 
 class TakeData extends Component{
     constructor() {
-        super()
         this.state = {
             todos: []
         }
@@ -48,11 +47,12 @@ class TakeData extends Component{
     }
 
     render() {
-        const todoItems = this.state.todos.map((item) => <TodoItem
+        const todoItems = (this.state.todos.length === 0) ? <div></div> : <div className="todo-list"> { this.state.todos.map((item) => <TodoItem
             key={item.id} 
             item={item} 
-            handleChange={this.handleChange}/>
-        );
+            handleChange={this.handleChange}/> 
+        )
+    } </div>
 
         return(
             <div>
@@ -66,9 +66,7 @@ class TakeData extends Component{
                         <button type="submit">Add Task!</button>
                     </form>
                 </div>
-                <div className="todo-list">
-                    {todoItems}
-                </div>
+                {todoItems}
             </div>
         );
     }
