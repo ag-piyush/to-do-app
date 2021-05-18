@@ -1,6 +1,9 @@
 import React, {Component} from "react";
 import TodoItem from "./TodoItem";
 import './TakeData.css';
+import axios from 'axios';
+
+axios.defaults.baseURL = "https://aqueous-cliffs-31660.herokuapp.com";
 
 class TakeData extends Component{
     constructor() {
@@ -13,10 +16,22 @@ class TakeData extends Component{
         this.onDelete = this.onDelete.bind(this);
     }
 
+    componentDidMount() {
+		axios.get("/todo").then(res => {
+			this.setState({ todos: res.data });
+            
+		});
+	}
+
     handleChange(id) {
         const updatedTodos = this.state.todos.map(todo => {
             if (todo.id === id){
                 todo.completed = !todo.completed
+                axios.post('/todo', {
+                    id: todo.id,
+                    text: todo.text,
+                    completed: todo.completed
+                })
             }
             return todo
         })
@@ -26,14 +41,19 @@ class TakeData extends Component{
             }
         });
     }
+
     addItem(e) {
         if (this._inputElement.value !== "") {
             var newItem = {
                 text: this._inputElement.value,
-                id: Date.now(),
                 completed: false
             };
-    
+
+            axios.post('/todo', {
+                text: newItem.text,
+                completed: newItem.completed
+            })
+
             this.setState((prevState) => {
                 return {
                     todos: prevState.todos.concat(newItem)
@@ -43,12 +63,14 @@ class TakeData extends Component{
             this._inputElement.value = "";
         }
     
-        console.log(this.state.todos);
-    
         e.preventDefault();
     }
     onDelete(id) {
         const newTodos = this.state.todos.filter((item) => item.id !== id);
+        
+        const URL = `/todo/${id}`;
+		axios.delete(URL);
+        
         this.setState(() => {
             return {
                 todos: newTodos
